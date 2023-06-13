@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo App</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    /* Add your custom CSS styles here */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    h1 {
+      color: #333;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    
+    form {
+      margin-bottom: 20px;
+    }
+    
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+    }
+    
+    li {
+      background-color: #f5f5f5;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .todo {
+      margin-bottom: 10px;
+    }
+    
+    .todo h3 {
+      color: #333;
+      font-size: 20px;
+      margin: 0;
+    }
+    
+    .todo p {
+      color: #777;
+      font-size: 14px;
+      margin: 0;
+    }
+    
+    .todo-actions {
+      margin-top: 10px;
+    }
+    
+    .btn-edit {
+      padding: 5px 10px;
+      font-size: 14px;
+      background-color: green;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn-delete {
+      padding: 5px 10px;
+      font-size: 14px;
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Todo App</h1>
+    <form id="addTodoForm" action="/todos" method="POST">
+      <input type="text" name="title" placeholder="Title" required>
+      <!-- <input type="text" name="description" placeholder="Description"> -->
+      <button type="submit">Add Todo</button>
+    </form>
+    <ul id="todoList">
+      <% todos.forEach(todo => { %>
+        <li>
+          <div class="todo">
+            <h3><%= todo.title %></h3>
+            <p><%= todo.description %></p>
+            <div class="todo-actions">
+              <!-- <a href="/todos/<%= todo.id %>/edit" class="btn-edit">Edit</a> -->
+              <form class="form-delete" action="/todos/<%= todo.id %>/delete" method="POST">
+                <button type="submit" class="btn-delete">Delete</button>
+              </form>
+            </div>
+          </div>
+        </li>
+      <% }); %>
+    </ul>
+  </div>
+</body>
+</html>
