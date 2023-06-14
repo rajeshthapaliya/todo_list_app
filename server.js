@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Connect to MongoDB
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://rajesh:rajesh@mycluster.0avymev.mongodb.net/mytodo', {
+mongoose.connect('mongodb+srv://rajesh:rajesh@mycluster.0avymev.mongodb.net/todos', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
