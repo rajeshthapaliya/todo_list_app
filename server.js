@@ -1,6 +1,9 @@
+require('dotenv').config(); // Load environment variables
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const uri = process.env.MONGO_URI;
 
 const app = express();
 const port = 3000;
@@ -13,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Connect to MongoDB
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://rajesh:rajesh@mycluster.0avymev.mongodb.net/todos', {
+mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
